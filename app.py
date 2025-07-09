@@ -6,6 +6,9 @@ import json
 import re
 import random
 from config import OPENAI_API_KEY
+from dotenv import load_dotenv  
+
+load_dotenv()  
 
 app = Flask(__name__)
 app.secret_key = 'secreta123'
