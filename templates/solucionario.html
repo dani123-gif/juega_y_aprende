@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% block title %}Solucionario{% endblock %}
+{% block head %}
+<style>
+    body {
+        background: linear-gradient(to top right, #fdfbfb 0%, #ebedee 100%);
+    }
+    .solucionario-container {
+        max-width: 900px;
+        margin: 60px auto;
+        padding: 2rem;
+        background-color: #ffffff;
+        border-radius: 1rem;
+        box-shadow: 0 1rem 2rem rgba(0,0,0,0.2);
+    }
+    .solucionario-container h2 {
+        text-align: center;
+        color: #0d6efd;
+        font-weight: bold;
+        margin-bottom: 2rem;
+    }
+    .pregunta-item {
+        border: 1px solid #dee2e6;
+        border-radius: 0.75rem;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        background-color: #f8f9fa;
+    }
+    .pregunta-item h5 {
+        font-weight: bold;
+    }
+    .list-group-item-success {
+        background-color: #d4edda;
+        font-weight: 600;
+    }
+    .explicacion {
+        background-color: #e2e3e5;
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+        font-size: 0.95rem;
+        margin-top: 10px;
+    }
+    .btn-volver {
+        display: block;
+        text-align: center;
+        margin-top: 2rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="solucionario-container">
+    <h2>📘 Solucionario Completo</h2>
+    {% for pregunta in preguntas %}
+        <div class="pregunta-item">
+            <h5>🧠 {{ loop.index }}. {{ pregunta.pregunta }}</h5>
+            <ul class="list-group list-group-flush">
+                {% for opcion in pregunta.opciones %}
+                    <li class="list-group-item {% if opcion == pregunta.respuesta_correcta %}list-group-item-success{% endif %}">
+                        {{ opcion }}
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="explicacion">
+                <strong>✅ Explicación:</strong> {{ pregunta.explicacion }}
+            </div>
+        </div>
+    {% endfor %}
+    <div class="btn-volver">
+        <a href="/" class="btn btn-primary">🏠 Volver al inicio</a>
+    </div>
+</div>
+{% endblock %}

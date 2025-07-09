@@ -1,0 +1,119 @@
+{% extends "layout.html" %}
+{% block title %}Inicio{% endblock %}
+{% block head %}
+<style>
+    body {
+        background: linear-gradient(135deg, #4a90e2, #50e3c2);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .card-juego {
+        max-width: 480px;
+        width: 100%;
+        border-radius: 1rem;
+        box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.2);
+        background: white;
+        padding: 2.5rem 2rem;
+    }
+    .card-juego h2 {
+        font-weight: 700;
+        color: #0d6efd;
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+    label.form-label {
+        font-weight: 600;
+        color: #333;
+    }
+    select.form-select, input.form-control {
+        border: 2px solid #0d6efd;
+        border-radius: 0.5rem;
+    }
+    select.form-select:focus, input.form-control:focus {
+        border-color: #084cd9;
+        box-shadow: 0 0 5px rgba(13, 110, 253, 0.6);
+        outline: none;
+    }
+    button.btn-success {
+        background: #0d6efd;
+        border: none;
+        font-weight: 700;
+        font-size: 1.15rem;
+        padding: 0.75rem;
+        border-radius: 0.7rem;
+        width: 100%;
+    }
+    button.btn-success:hover {
+        background: #084cd9;
+    }
+    a.btn-outline-dark {
+        margin-top: 1.5rem;
+        display: inline-block;
+        width: 100%;
+        font-weight: 600;
+        color: #0d6efd;
+        border-color: #0d6efd;
+        text-align: center;
+        padding: 0.5rem;
+        border-radius: 0.7rem;
+    }
+    a.btn-outline-dark:hover {
+        background-color: #0d6efd;
+        color: white;
+        text-decoration: none;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="card card-juego">
+    <h2>🎮 Bienvenido a <strong>Juega y Aprende</strong></h2>
+    <form method="POST" action="/comenzar" class="mt-4">
+        <div class="mb-3">
+            <label for="curso" class="form-label">Curso</label>
+            <select class="form-select" name="curso" id="curso" required>
+                <option value="" disabled selected>Seleccione un curso</option>
+                <option value="Matemática I">Matemática I</option>
+                <option value="Matemática II">Matemática II</option>
+                <option value="Física I">Física I</option>
+                <option value="Física II">Física II</option>
+                <option value="Química General">Química General</option>
+                <option value="Química Orgánica">Química Orgánica</option>
+                <option value="Biología">Biología</option>
+                <option value="Estadística">Estadística</option>
+                <option value="Programación">Programación</option>
+                <option value="Contabilidad">Contabilidad</option>
+                <option value="Economía">Economía</option>
+                <option value="Administración">Administración</option>
+                <option value="Derecho">Derecho</option>
+                <option value="Inglés Técnico">Inglés Técnico</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="tema" class="form-label">Tema</label>
+            <input type="text" class="form-control" id="tema" name="tema" placeholder="Ej: Integrales, Ley de Newton, Balanceo de ecuaciones" required>
+        </div>
+        <div class="mb-3">
+            <label for="tipo" class="form-label">Tipo de pregunta</label>
+            <select class="form-select" id="tipo" name="tipo" required>
+                <option value="" disabled selected>Seleccione tipo</option>
+                <option value="Teoría">Teoría</option>
+                <option value="Práctica">Práctica</option>
+            </select>
+        </div>
+        <div class="mb-4">
+            <label for="dificultad" class="form-label">Dificultad</label>
+            <select class="form-select" id="dificultad" name="dificultad" required>
+                <option value="" disabled selected>Seleccione dificultad</option>
+                <option value="Fácil">Fácil</option>
+                <option value="Media">Media</option>
+                <option value="Difícil">Difícil</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-success">🎯 Comenzar juego</button>
+    </form>
+    <a href="/historial" class="btn btn-outline-dark mt-3">📚 Ver Historial</a>
+</div>
+{% endblock %}
+

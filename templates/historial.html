@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block title %}Historial{% endblock %}
+{% block head %}
+<style>
+    body {
+        background: linear-gradient(to right, #ffefba, #ffffff);
+    }
+    .historial-container {
+        max-width: 1000px;
+        margin: 60px auto;
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 1rem 2rem rgba(0,0,0,0.1);
+    }
+    h2 {
+        text-align: center;
+        font-weight: bold;
+        color: #0d6efd;
+        margin-bottom: 2rem;
+    }
+    table {
+        font-size: 0.95rem;
+    }
+    .table thead th {
+        background-color: #0d6efd;
+        color: white;
+    }
+    .btn-volver {
+        margin-top: 2rem;
+        display: block;
+        text-align: center;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="historial-container">
+    <h2>📚 Historial de Juegos</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Curso</th>
+                    <th>Tema</th>
+                    <th>Tipo</th>
+                    <th>Dificultad</th>
+                    <th>Puntaje</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fila in historial %}
+                <tr>
+                    <td>{{ fila[0] }}</td>
+                    <td>{{ fila[1] }}</td>
+                    <td>{{ fila[2] }}</td>
+                    <td>{{ fila[3] }}</td>
+                    <td>{{ fila[4] }}</td>
+                    <td>{{ fila[5].strftime('%d/%m/%Y %H:%M') }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="btn-volver">
+        <a href="/" class="btn btn-outline-primary">🏠 Volver al inicio</a>
+    </div>
+</div>
+{% endblock %}
+
+

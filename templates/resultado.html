@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block title %}Resultado{% endblock %}
+{% block head %}
+<style>
+    body {
+        background: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+    }
+    .resultado-container {
+        max-width: 600px;
+        margin: 80px auto;
+        padding: 2rem;
+        background-color: white;
+        border-radius: 1rem;
+        box-shadow: 0 1rem 2rem rgba(0,0,0,0.2);
+        text-align: center;
+    }
+    .resultado-container h2 {
+        font-weight: 700;
+        color: #dc3545;
+    }
+    .puntaje-final {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: #0d6efd;
+        margin: 1rem 0;
+    }
+    .btn-group a {
+        margin: 0.5rem;
+        min-width: 180px;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="resultado-container">
+        <h2>🎉 ¡Juego Terminado!</h2>
+        <p class="fs-5">Curso: <strong>{{ curso }}</strong></p>
+        <p class="fs-5">Tema: <strong>{{ tema }}</strong></p>
+        <p class="fs-5">Tipo: <strong>{{ tipo }}</strong> | Dificultad: <strong>{{ dificultad }}</strong></p>
+        <div class="puntaje-final">🏆 Puntaje: {{ puntaje }}/5</div>
+        <div class="btn-group d-flex justify-content-center flex-wrap">
+            <a href="/solucionario" class="btn btn-outline-success">📘 Ver Solucionario</a>
+            <a href="/" class="btn btn-primary">🔁 Volver a jugar</a>
+            <a href="/historial" class="btn btn-outline-dark">📚 Historial</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

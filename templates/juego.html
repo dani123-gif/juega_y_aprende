@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+{% block title %}Juego{% endblock %}
+{% block head %}
+<style>
+    body {
+        background: linear-gradient(120deg, #74ebd5 0%, #9face6 100%);
+    }
+    .game-container {
+        max-width: 700px;
+        margin: 50px auto;
+        padding: 2rem;
+        background: #ffffff;
+        border-radius: 1rem;
+        box-shadow: 0 0.75rem 1.5rem rgba(0,0,0,0.2);
+        animation: fadeIn 0.5s ease-in-out;
+    }
+    .pregunta {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 1.5rem;
+    }
+    .opciones button {
+        width: 100%;
+        margin-bottom: 10px;
+        text-align: left;
+        font-weight: 500;
+    }
+    .mensaje-feedback {
+        margin-top: 20px;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+    @keyframes fadeIn {
+        from {opacity: 0; transform: translateY(20px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="game-container">
+        <h4 class="text-primary mb-3">Pregunta {{ session.actual + 1 }} de {{ session.preguntas|length }}</h4>
+        <p class="pregunta">🧠 {{ pregunta.pregunta }}</p>
+        <form method="POST">
+            <div class="opciones">
+                {% for opcion in pregunta.opciones %}
+                    <button type="submit" name="respuesta" value="{{ opcion }}" class="btn btn-outline-primary">{{ opcion }}</button>
+                {% endfor %}
+            </div>
+        </form>
+
+        {% if mensaje %}
+            <div class="alert {% if correcta %}alert-success{% else %}alert-danger{% endif %} mensaje-feedback">
+                {{ mensaje }}
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
