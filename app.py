@@ -1,18 +1,19 @@
-# app.py
-from flask import Flask, render_template, request, redirect, session
+from flask import Flask, render_template, request, redirect, session, url_for
 import mysql.connector
 import openai
 import json
 import re
 import random
-from config import OPENAI_API_KEY
-from dotenv import load_dotenv  
+import os
+from dotenv import load_dotenv
 
-load_dotenv()  
+load_dotenv()
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
 app.secret_key = 'secreta123'
 openai.api_key = OPENAI_API_KEY
+
 
 # Crear base de datos y tabla si no existen
 def crear_base_de_datos_y_tabla():
